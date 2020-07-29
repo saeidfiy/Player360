@@ -1,7 +1,12 @@
 from tkinter import *
+from pygame import mixer
 
 
 root = Tk()
+
+mixer.init() #initializeing the mixer
+
+
 root.geometry('300x300')
 root.title("Player360")
 root.iconbitmap(r'../ico/360icon.ico')
@@ -17,6 +22,8 @@ previousimg = PhotoImage(file="../ico/previous.png")
 
 
 def play_btn():
+    mixer.music.load("../test.mp3")
+    mixer.music.play()
     print("play button")
 
 def stop_btn():
