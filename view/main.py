@@ -9,8 +9,15 @@ root.iconbitmap(r'../ico/360icon.ico')
 text = Label(root,text="Music Player")
 text.pack()
 
-img = PhotoImage(file="../ico/play.png")
+playimg = PhotoImage(file="../ico/play.png")
 
-photo = Label(root,image=img).pack()
+
+
+def play_btn():
+    print("play button")
+
+
+    
+btn = Button(root,image=playimg,command=play_btn).pack()
 
 root.mainloop()
