@@ -41,6 +41,9 @@ def previous_btn():
 
 def pause_btn():
     print("pause button")
+def val_btn(val):
+    volume = int(val) /100
+    mixer.music.set_volume(volume)
 
 
 
@@ -50,6 +53,8 @@ pauseBtn = Button(root,image=pauseimg,command=pause_btn).pack()
 nextBtn = Button(root,image=nextimg,command=next_btn).pack()
 previousBtn = Button(root,image=previousimg,command=previous_btn).pack()
 
-scale = Scale(root,from_=0,to=100,orient=HORIZONTAL).pack()
+scale = Scale(root,from_=0,to=100,orient=HORIZONTAL,command=val_btn)
+scale.set(70)
+scale.pack()
 
 root.mainloop()
