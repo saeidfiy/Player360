@@ -18,6 +18,7 @@ playimg = PhotoImage(file="../ico/play.png")
 stopimg = PhotoImage(file="../ico/stop.png")
 nextimg = PhotoImage(file="../ico/next.png")
 previousimg = PhotoImage(file="../ico/previous.png")
+pauseimg = PhotoImage(file="../ico/pause.png")
 
 
 
@@ -38,10 +39,14 @@ def next_btn():
 def previous_btn():
     print("previous button")
 
+def pause_btn():
+    print("pause button")
+
 
 
 playtBtn = Button(root,image=playimg,command=play_btn).pack()
 stopBtn = Button(root,image=stopimg,command=stop_btn).pack()
+pauseBtn = Button(root,image=pauseimg,command=pause_btn).pack()
 nextBtn = Button(root,image=nextimg,command=next_btn).pack()
 previousBtn = Button(root,image=previousimg,command=previous_btn).pack()
 
