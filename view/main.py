@@ -50,4 +50,6 @@ pauseBtn = Button(root,image=pauseimg,command=pause_btn).pack()
 nextBtn = Button(root,image=nextimg,command=next_btn).pack()
 previousBtn = Button(root,image=previousimg,command=previous_btn).pack()
 
+scale = Scale(root,from_=0,to=100,orient=HORIZONTAL).pack()
+
 root.mainloop()
