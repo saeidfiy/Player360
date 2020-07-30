@@ -27,6 +27,7 @@ def play_btn():
     print("play button")
 
 def stop_btn():
+    mixer.music.stop()
     print("stop button")
 
 
