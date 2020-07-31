@@ -4,6 +4,22 @@ from pygame import mixer
 
 root = Tk()
 
+
+#config tapbar
+menuBar = Menu(root)
+root.config(menu=menuBar)
+#make topbar
+subMenu = Menu(menuBar,tearoff=0)
+menuBar.add_cascade(label="File",menu=subMenu)
+subMenu.add_command(label="Open")
+subMenu.add_command(label="Exit")
+
+subMenu = Menu(menuBar,tearoff=0)
+menuBar.add_cascade(label="Help",menu=subMenu)
+subMenu.add_command(label="About Us")
+
+
+
 mixer.init() #initializeing the mixer
 
 
@@ -13,6 +29,12 @@ root.iconbitmap(r'../ico/360icon.ico')
 
 text = Label(root,text="Music Player")
 text.pack()
+
+
+
+
+
+
 
 playimg = PhotoImage(file="../ico/play.png")
 stopimg = PhotoImage(file="../ico/stop.png")
