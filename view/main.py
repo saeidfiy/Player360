@@ -1,6 +1,7 @@
 from tkinter import *
 from pygame import mixer
 import tkinter.messagebox
+from tkinter import filedialog
 
 
 root = Tk()
@@ -10,9 +11,13 @@ root = Tk()
 menuBar = Menu(root)
 root.config(menu=menuBar)
 #make topbar
+def browse_file():
+    global filename
+    filename = filedialog.askopenfilename()
+    print(filename)
 subMenu = Menu(menuBar,tearoff=0)
 menuBar.add_cascade(label="File",menu=subMenu)
-subMenu.add_command(label="Open")
+subMenu.add_command(label="Open",command=browse_file)
 subMenu.add_command(label="Exit",command=root.destroy)
 
 def about_us():
@@ -49,9 +54,12 @@ pauseimg = PhotoImage(file="../ico/pause.png")
 
 
 def play_btn():
-    mixer.music.load("../test.mp3")
-    mixer.music.play()
-    print("play button")
+    try:
+        mixer.music.load(filename)
+        mixer.music.play()
+        print("play button")
+    except:
+        tkinter.messagebox.showerror('File not found','Player 360 could not open music')
 
 def stop_btn():
     mixer.music.stop()
