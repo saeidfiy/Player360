@@ -1,5 +1,6 @@
 from tkinter import *
 from pygame import mixer
+import tkinter.messagebox
 
 
 root = Tk()
@@ -12,11 +13,14 @@ root.config(menu=menuBar)
 subMenu = Menu(menuBar,tearoff=0)
 menuBar.add_cascade(label="File",menu=subMenu)
 subMenu.add_command(label="Open")
-subMenu.add_command(label="Exit")
+subMenu.add_command(label="Exit",command=root.destroy)
+
+def about_us():
+    tkinter.messagebox.showinfo("About Player 360","It is light and safe music player  https://github.com/sasa6277")
 
 subMenu = Menu(menuBar,tearoff=0)
 menuBar.add_cascade(label="Help",menu=subMenu)
-subMenu.add_command(label="About Us")
+subMenu.add_command(label="About Us",command=about_us)
 
 
 
