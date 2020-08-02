@@ -91,4 +91,9 @@ scale = Scale(root,from_=0,to=100,orient=HORIZONTAL,command=val_btn)
 scale.set(70)
 scale.pack()
 
+#Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W).pack(side=BOTTOM)
+
+statusbar = Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W)
+statusbar.pack(side=BOTTOM,fill=X)
+
 root.mainloop()
