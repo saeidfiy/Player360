@@ -1,3 +1,4 @@
+import os
 from tkinter import *
 from pygame import mixer
 import tkinter.messagebox
@@ -57,12 +58,14 @@ def play_btn():
     try:
         mixer.music.load(filename)
         mixer.music.play()
+        statusbar['text'] = "Playin Music" + " - " + os.path.basename(filename)
         print("play button")
     except:
         tkinter.messagebox.showerror('File not found','Player 360 could not open music')
 
 def stop_btn():
     mixer.music.stop()
+    statusbar['text'] = "Stop Music"
     print("stop button")
 
 
