@@ -56,13 +56,19 @@ pauseimg = PhotoImage(file="../ico/pause.png")
 
 def play_btn():
     try:
-        mixer.music.load(filename)
-        mixer.music.play()
-        statusbar['text'] = "Playin Music" + " - " + os.path.basename(filename)
-        print("play button")
-    except:
-        tkinter.messagebox.showerror('File not found','Player 360 could not open music')
-
+        paused
+    except NameError:    
+        try:
+            mixer.music.load(filename)
+            mixer.music.play()
+            statusbar['text'] = "Playin Music" + " - " + os.path.basename(filename)
+            print("play button")
+        except:
+            tkinter.messagebox.showerror('File not found','Player 360 could not open music')
+    else:
+        statusbar['text'] = "Resumed Music" + " - " + os.path.basename(filename)
+        mixer.music.unpause()
+        
 def stop_btn():
     mixer.music.stop()
     statusbar['text'] = "Stop Music"
@@ -77,6 +83,10 @@ def previous_btn():
     print("previous button")
 
 def pause_btn():
+    global paused
+    paused = TRUE
+    statusbar['text'] = "Paused Music" + " - " + os.path.basename(filename)
+    mixer.music.pause()
     print("pause button")
 def val_btn(val):
     volume = int(val) /100
