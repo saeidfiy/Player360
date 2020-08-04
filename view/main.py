@@ -8,6 +8,10 @@ from tkinter import filedialog
 root = Tk()
 
 
+middleframe = Frame(root)
+
+
+
 #config tapbar
 menuBar = Menu(root)
 root.config(menu=menuBar)
@@ -93,12 +97,12 @@ def val_btn(val):
     mixer.music.set_volume(volume)
 
 
-
-playtBtn = Button(root,image=playimg,command=play_btn).pack()
-stopBtn = Button(root,image=stopimg,command=stop_btn).pack()
-pauseBtn = Button(root,image=pauseimg,command=pause_btn).pack()
-nextBtn = Button(root,image=nextimg,command=next_btn).pack()
-previousBtn = Button(root,image=previousimg,command=previous_btn).pack()
+middleframe.pack()
+playtBtn = Button(middleframe,image=playimg,command=play_btn).pack(side=LEFT)
+stopBtn = Button(middleframe,image=stopimg,command=stop_btn).pack(side=LEFT)
+pauseBtn = Button(middleframe,image=pauseimg,command=pause_btn).pack(side=LEFT)
+nextBtn = Button(middleframe,image=nextimg,command=next_btn).pack(side=LEFT)
+previousBtn = Button(middleframe,image=previousimg,command=previous_btn).pack(side=LEFT)
 
 scale = Scale(root,from_=0,to=100,orient=HORIZONTAL,command=val_btn)
 scale.set(70)
