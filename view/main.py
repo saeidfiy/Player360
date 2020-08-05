@@ -37,7 +37,7 @@ subMenu.add_command(label="About Us",command=about_us)
 mixer.init() #initializeing the mixer
 
 
-root.geometry('300x300')
+root.geometry('300x150')
 root.title("Player360")
 root.iconbitmap(r'../ico/360icon.ico')
 
@@ -98,11 +98,11 @@ def val_btn(val):
 
 
 middleframe.pack()
-playtBtn = Button(middleframe,image=playimg,command=play_btn).pack(side=LEFT)
-stopBtn = Button(middleframe,image=stopimg,command=stop_btn).pack(side=LEFT)
-pauseBtn = Button(middleframe,image=pauseimg,command=pause_btn).pack(side=LEFT)
-nextBtn = Button(middleframe,image=nextimg,command=next_btn).pack(side=LEFT)
-previousBtn = Button(middleframe,image=previousimg,command=previous_btn).pack(side=LEFT)
+playtBtn = Button(middleframe,image=playimg,command=play_btn).pack(side=LEFT,padx=2)
+stopBtn = Button(middleframe,image=stopimg,command=stop_btn).pack(side=LEFT,padx=2)
+pauseBtn = Button(middleframe,image=pauseimg,command=pause_btn).pack(side=LEFT,padx=2)
+nextBtn = Button(middleframe,image=nextimg,command=next_btn).pack(side=LEFT,padx=2)
+previousBtn = Button(middleframe,image=previousimg,command=previous_btn).pack(side=LEFT,padx=2)
 
 scale = Scale(root,from_=0,to=100,orient=HORIZONTAL,command=val_btn)
 scale.set(70)
