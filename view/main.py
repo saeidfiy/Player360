@@ -55,6 +55,8 @@ stopimg = PhotoImage(file="../ico/stop.png")
 nextimg = PhotoImage(file="../ico/next.png")
 rewindimg = PhotoImage(file="../ico/rewind.png")
 pauseimg = PhotoImage(file="../ico/pause.png")
+mute = PhotoImage(file="../ico/mute.png")
+unmute = PhotoImage(file="../ico/unmute.png")
 
 
 
@@ -98,6 +100,9 @@ def val_btn(val):
     volume = int(val) /100
     mixer.music.set_volume(volume)
 
+def mute_btn():
+    print("mute button")    
+
 
 middleframe.pack()
 playtBtn = Button(middleframe,image=playimg,command=play_btn).grid(row=0,column=1,padx=2)
@@ -105,9 +110,15 @@ stopBtn = Button(middleframe,image=stopimg,command=stop_btn).grid(row=0,column=2
 pauseBtn = Button(middleframe,image=pauseimg,command=pause_btn).grid(row=0,column=3,padx=2)
 nextBtn = Button(middleframe,image=nextimg,command=next_btn).grid(row=0,column=4,padx=2)
 rewindBtn = Button(middleframe,image=rewindimg,command=rewind_btn).grid(row=0,column=0,padx=2)
-scale = Scale(root,from_=0,to=100,orient=HORIZONTAL,command=val_btn)
+
+bottomFrame = Frame(root)
+bottomFrame.pack()
+
+muteBtn = Button(bottomFrame,image=unmute,command=mute_btn).grid(row=0,column=0,padx=2)
+
+scale = Scale(bottomFrame,from_=0,to=100,orient=HORIZONTAL,command=val_btn)
 scale.set(70)
-scale.pack()
+scale.grid(row=0,column=1)
 
 #Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W).pack(side=BOTTOM)
 
