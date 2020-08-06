@@ -53,7 +53,7 @@ text.pack()
 playimg = PhotoImage(file="../ico/play.png")
 stopimg = PhotoImage(file="../ico/stop.png")
 nextimg = PhotoImage(file="../ico/next.png")
-previousimg = PhotoImage(file="../ico/previous.png")
+rewindimg = PhotoImage(file="../ico/rewind.png")
 pauseimg = PhotoImage(file="../ico/pause.png")
 
 
@@ -83,7 +83,9 @@ def next_btn():
     print("next button")
 
 
-def previous_btn():
+def rewind_btn():
+    play_btn()
+    statusbar['text'] = "Rewind Music" + " - " + os.path.basename(filename)
     print("previous button")
 
 def pause_btn():
@@ -102,7 +104,7 @@ playtBtn = Button(middleframe,image=playimg,command=play_btn).grid(row=0,column=
 stopBtn = Button(middleframe,image=stopimg,command=stop_btn).grid(row=0,column=2,padx=2)
 pauseBtn = Button(middleframe,image=pauseimg,command=pause_btn).grid(row=0,column=3,padx=2)
 nextBtn = Button(middleframe,image=nextimg,command=next_btn).grid(row=0,column=4,padx=2)
-previousBtn = Button(middleframe,image=previousimg,command=previous_btn).grid(row=0,column=0,padx=2)
+rewindBtn = Button(middleframe,image=rewindimg,command=rewind_btn).grid(row=0,column=0,padx=2)
 scale = Scale(root,from_=0,to=100,orient=HORIZONTAL,command=val_btn)
 scale.set(70)
 scale.pack()
