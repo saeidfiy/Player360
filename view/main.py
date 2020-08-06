@@ -100,7 +100,9 @@ def val_btn(val):
     volume = int(val) /100
     mixer.music.set_volume(volume)
 
+mute = FALSE
 def mute_btn():
+    muteBtn.configure(image=mute)
     print("mute button")    
 
 
@@ -114,7 +116,8 @@ rewindBtn = Button(middleframe,image=rewindimg,command=rewind_btn).grid(row=0,co
 bottomFrame = Frame(root)
 bottomFrame.pack()
 
-muteBtn = Button(bottomFrame,image=unmute,command=mute_btn).grid(row=0,column=0,padx=2)
+muteBtn = Button(bottomFrame,image=unmute,command=mute_btn)
+muteBtn.grid(row=0,column=0,padx=2)
 
 scale = Scale(bottomFrame,from_=0,to=100,orient=HORIZONTAL,command=val_btn)
 scale.set(70)
