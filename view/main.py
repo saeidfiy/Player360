@@ -96,13 +96,27 @@ def pause_btn():
     statusbar['text'] = "Paused Music" + " - " + os.path.basename(filename)
     mixer.music.pause()
     print("pause button")
+
+
+isMute = FALSE    
 def val_btn(val):
     volume = int(val) /100
     mixer.music.set_volume(volume)
 
-mute = FALSE
+
 def mute_btn():
-    muteBtn.configure(image=mute)
+    global isMute
+    if isMute:
+        muteBtn.configure(image=unmute)
+        mixer.music.set_volume(0.7)
+        scale.set(70)
+        isMute = FALSE
+    else:
+        muteBtn.configure(image=mute)
+        mixer.music.set_volume(0)
+        scale.set(0)
+        isMute = TRUE
+    
     print("mute button")    
 
 
