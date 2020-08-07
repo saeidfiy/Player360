@@ -61,19 +61,19 @@ unmute = PhotoImage(file="../ico/unmute.png")
 
 
 def play_btn():
-    try:
-        paused
-    except NameError:    
-        try:
+    global paused
+    if paused:
+        statusbar['text'] = "Resumed Music" + " - " + os.path.basename(filename)
+        mixer.music.unpause()
+        paused=FALSE
+    else:    
+         try:
             mixer.music.load(filename)
             mixer.music.play()
             statusbar['text'] = "Playin Music" + " - " + os.path.basename(filename)
             print("play button")
-        except:
+         except:
             tkinter.messagebox.showerror('File not found','Player 360 could not open music')
-    else:
-        statusbar['text'] = "Resumed Music" + " - " + os.path.basename(filename)
-        mixer.music.unpause()
         
 def stop_btn():
     mixer.music.stop()
@@ -90,6 +90,7 @@ def rewind_btn():
     statusbar['text'] = "Rewind Music" + " - " + os.path.basename(filename)
     print("previous button")
 
+paused = FALSE
 def pause_btn():
     global paused
     paused = TRUE
