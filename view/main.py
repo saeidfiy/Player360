@@ -41,9 +41,12 @@ root.geometry('300x150')
 root.title("Player360")
 root.iconbitmap(r'../ico/360icon.ico')
 
-text = Label(root,text="Music Player")
-text.pack()
+fileLable = Label(root,text="Music Player")
+fileLable.pack()
 
+
+fileLength = Label(root,text="Total Length : --:--")
+fileLength.pack()
 
 
 
@@ -58,7 +61,15 @@ pauseimg = PhotoImage(file="../ico/pause.png")
 mute = PhotoImage(file="../ico/mute.png")
 unmute = PhotoImage(file="../ico/unmute.png")
 
-
+def show_details():
+    fileLable['text'] = "Playing " + os.path.basename(filename)
+    a = mixer.Sound(filename)
+    total_length = a.get_length()
+    mins,secs = divmod(total_length,60)
+    mins = round(mins)
+    secs = round(secs)
+    timeFormat = '{:02d}:{:02d}'.format(mins,secs)
+    fileLength['text'] = "Total Length : " + timeFormat
 
 def play_btn():
     global paused
@@ -71,6 +82,7 @@ def play_btn():
             mixer.music.load(filename)
             mixer.music.play()
             statusbar['text'] = "Playin Music" + " - " + os.path.basename(filename)
+            show_details()
             print("play button")
          except:
             tkinter.messagebox.showerror('File not found','Player 360 could not open music')
