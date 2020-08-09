@@ -2,6 +2,7 @@ import os
 from tkinter import *
 from pygame import mixer
 import tkinter.messagebox
+from mutagen.mp3 import MP3
 from tkinter import filedialog
 
 
@@ -63,8 +64,17 @@ unmute = PhotoImage(file="../ico/unmute.png")
 
 def show_details():
     fileLable['text'] = "Playing " + os.path.basename(filename)
-    a = mixer.Sound(filename)
-    total_length = a.get_length()
+
+    file_type = os.path.splitext(filename)
+    
+
+    if file_type[1] == '.mp3':
+        audio = MP3(filename)
+        total_length = audio.info.length      
+    else:
+        a = mixer.Sound(filename)
+        total_length = a.get_length()
+        print(file_type[1])
     mins,secs = divmod(total_length,60)
     mins = round(mins)
     secs = round(secs)
