@@ -5,5 +5,6 @@ MusicPlayer is an open source music player for Windows.safe and light
 It make by python 
 module use :
 * Tkinter
-* pygame
-* os
+* Pygame
+* Os
+* Mutagen
