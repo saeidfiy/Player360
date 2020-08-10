@@ -8,3 +8,5 @@ module use :
 * Pygame
 * Os
 * Mutagen
+* Time
+* Threading
