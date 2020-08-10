@@ -1,4 +1,6 @@
 import os
+import time
+import threading
 from tkinter import *
 from pygame import mixer
 import tkinter.messagebox
@@ -38,7 +40,7 @@ subMenu.add_command(label="About Us",command=about_us)
 mixer.init() #initializeing the mixer
 
 
-root.geometry('300x150')
+root.geometry('300x200')
 root.title("Player360")
 root.iconbitmap(r'../ico/360icon.ico')
 
@@ -48,6 +50,9 @@ fileLable.pack()
 
 fileLength = Label(root,text="Total Length : --:--")
 fileLength.pack()
+
+currentLengthLabel = Label(root,text="Current Length : --:--",relief = GROOVE)
+currentLengthLabel.pack(pady=5)
 
 
 
@@ -80,6 +85,23 @@ def show_details():
     secs = round(secs)
     timeFormat = '{:02d}:{:02d}'.format(mins,secs)
     fileLength['text'] = "Total Length : " + timeFormat
+    t1 = threading.Thread(target=start_count,args=(total_length,))
+    t1.start()
+    
+def start_count(t):
+    global paused
+    x = 0
+    while x <= t and mixer.music.get_busy():
+        if paused:
+            continue
+        else:    
+            mins,secs = divmod(x,60)
+            mins = round(mins)
+            secs = round(secs)
+            timeFormat = '{:02d}:{:02d}'.format(mins,secs)
+            currentLengthLabel['text'] = "Current Length : " + timeFormat
+            time.sleep(1)
+            x += 1
 
 def play_btn():
     global paused
