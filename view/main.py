@@ -90,18 +90,18 @@ def show_details():
     
 def start_count(t):
     global paused
-    x = 0
-    while x <= t and mixer.music.get_busy():
+    current_time = 0
+    while current_time <= t and mixer.music.get_busy():
         if paused:
             continue
         else:    
-            mins,secs = divmod(x,60)
+            mins,secs = divmod(current_time,60)
             mins = round(mins)
             secs = round(secs)
             timeFormat = '{:02d}:{:02d}'.format(mins,secs)
             currentLengthLabel['text'] = "Current Length : " + timeFormat
             time.sleep(1)
-            x += 1
+            current_time += 1
 
 def play_btn():
     global paused
