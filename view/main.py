@@ -187,4 +187,10 @@ scale.grid(row=0,column=1)
 statusbar = Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W)
 statusbar.pack(side=BOTTOM,fill=X)
 
+def on_closing():
+    stop_btn()
+    root.destroy()
+
+root.protocol("WM_DELETE_WINDOW",on_closing)
+
 root.mainloop()
