@@ -11,7 +11,8 @@ from tkinter import filedialog
 root = Tk()
 
 
-middleframe = Frame(root)
+statusbar = Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W)
+statusbar.pack(side=BOTTOM,fill=X)
 
 
 
@@ -40,18 +41,25 @@ subMenu.add_command(label="About Us",command=about_us)
 mixer.init() #initializeing the mixer
 
 
-root.geometry('300x200')
+root.geometry('425x225')
 root.title("Player360")
 root.iconbitmap(r'../ico/360icon.ico')
 
-fileLable = Label(root,text="Music Player")
-fileLable.pack()
+leftFrame = Frame(root)
+leftFrame.pack(side=LEFT)
+
+rightFrame = Frame(root)
+rightFrame.pack()
+
+topFrame = Frame(rightFrame)
+topFrame.pack()
 
 
-fileLength = Label(root,text="Total Length : --:--")
+
+fileLength = Label(topFrame,text="Total Length : --:--")
 fileLength.pack()
 
-currentLengthLabel = Label(root,text="Current Length : --:--",relief = GROOVE)
+currentLengthLabel = Label(topFrame,text="Current Length : --:--",relief = GROOVE)
 currentLengthLabel.pack(pady=5)
 
 
@@ -67,9 +75,17 @@ pauseimg = PhotoImage(file="../ico/pause.png")
 mute = PhotoImage(file="../ico/mute.png")
 unmute = PhotoImage(file="../ico/unmute.png")
 
-def show_details():
-    fileLable['text'] = "Playing " + os.path.basename(filename)
 
+Lb1 = Listbox(leftFrame)
+Lb1.pack(padx=20)
+
+btn_add = Button(leftFrame,text="+ Add")
+btn_add.pack(side=LEFT,padx=20)
+
+btn_del = Button(leftFrame,text="- Delete")
+btn_del.pack(side=LEFT,padx=10)
+
+def show_details():
     file_type = os.path.splitext(filename)
     
 
@@ -164,6 +180,7 @@ def mute_btn():
     
     print("mute button")    
 
+middleframe = Frame(rightFrame)
 
 middleframe.pack()
 playtBtn = Button(middleframe,image=playimg,command=play_btn).grid(row=0,column=1,padx=2)
@@ -172,7 +189,7 @@ pauseBtn = Button(middleframe,image=pauseimg,command=pause_btn).grid(row=0,colum
 nextBtn = Button(middleframe,image=nextimg,command=next_btn).grid(row=0,column=4,padx=2)
 rewindBtn = Button(middleframe,image=rewindimg,command=rewind_btn).grid(row=0,column=0,padx=2)
 
-bottomFrame = Frame(root)
+bottomFrame = Frame(rightFrame)
 bottomFrame.pack()
 
 muteBtn = Button(bottomFrame,image=unmute,command=mute_btn)
@@ -184,8 +201,7 @@ scale.grid(row=0,column=1)
 
 #Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W).pack(side=BOTTOM)
 
-statusbar = Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W)
-statusbar.pack(side=BOTTOM,fill=X)
+
 
 def on_closing():
     stop_btn()
