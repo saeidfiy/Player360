@@ -23,7 +23,17 @@ root.config(menu=menuBar)
 def browse_file():
     global filename
     filename = filedialog.askopenfilename()
-    print(filename)
+    add_to_playList(filename)
+
+def add_to_playList(f):
+    f = os.path.basename(f)
+    index = 0
+    playListBox.insert(index,f)
+    index += 1
+   
+
+
+
 subMenu = Menu(menuBar,tearoff=0)
 menuBar.add_cascade(label="File",menu=subMenu)
 subMenu.add_command(label="Open",command=browse_file)
@@ -76,10 +86,10 @@ mute = PhotoImage(file="../ico/mute.png")
 unmute = PhotoImage(file="../ico/unmute.png")
 
 
-Lb1 = Listbox(leftFrame)
-Lb1.pack(padx=20)
+playListBox = Listbox(leftFrame)
+playListBox.pack(padx=20)
 
-btn_add = Button(leftFrame,text="+ Add")
+btn_add = Button(leftFrame,text="+ Add",command=browse_file)
 btn_add.pack(side=LEFT,padx=20)
 
 btn_del = Button(leftFrame,text="- Delete")
