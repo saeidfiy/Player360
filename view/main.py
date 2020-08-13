@@ -15,6 +15,8 @@ statusbar = Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W)
 statusbar.pack(side=BOTTOM,fill=X)
 
 
+playList = []
+
 
 #config tapbar
 menuBar = Menu(root)
@@ -26,8 +28,9 @@ def browse_file():
     add_to_playList(filename)
 
 def add_to_playList(f):
-    f = os.path.basename(f)
     index = 0
+    playList.insert(index,f)
+    f = os.path.basename(f)
     playListBox.insert(index,f)
     index += 1
    
@@ -137,7 +140,11 @@ def play_btn():
         paused=FALSE
     else:    
          try:
-            mixer.music.load(filename)
+            selected_song = playListBox.curselection()
+            selected_song = int(selected_song[0])
+            play_it = playList[selected_song]
+            print(play_it)
+            mixer.music.load(play_it)
             mixer.music.play()
             statusbar['text'] = "Playin Music" + " - " + os.path.basename(filename)
             show_details()
