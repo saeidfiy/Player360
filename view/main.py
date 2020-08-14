@@ -98,15 +98,15 @@ btn_add.pack(side=LEFT,padx=20)
 btn_del = Button(leftFrame,text="- Delete")
 btn_del.pack(side=LEFT,padx=10)
 
-def show_details():
-    file_type = os.path.splitext(filename)
+def show_details(play_it):
+    file_type = os.path.splitext(play_it)
     
 
     if file_type[1] == '.mp3':
-        audio = MP3(filename)
+        audio = MP3(play_it)
         total_length = audio.info.length      
     else:
-        a = mixer.Sound(filename)
+        a = mixer.Sound(play_it)
         total_length = a.get_length()
         print(file_type[1])
     mins,secs = divmod(total_length,60)
@@ -140,14 +140,16 @@ def play_btn():
         paused=FALSE
     else:    
          try:
+            stop_btn()
+            time.sleep(1) 
             selected_song = playListBox.curselection()
             selected_song = int(selected_song[0])
             play_it = playList[selected_song]
             print(play_it)
             mixer.music.load(play_it)
             mixer.music.play()
-            statusbar['text'] = "Playin Music" + " - " + os.path.basename(filename)
-            show_details()
+            statusbar['text'] = "Playin Music" + " - " + os.path.basename(play_it)
+            show_details(play_it)
             print("play button")
          except:
             tkinter.messagebox.showerror('File not found','Player 360 could not open music')
