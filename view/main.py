@@ -95,7 +95,13 @@ playListBox.pack(padx=20)
 btn_add = Button(leftFrame,text="+ Add",command=browse_file)
 btn_add.pack(side=LEFT,padx=20)
 
-btn_del = Button(leftFrame,text="- Delete")
+def del_song():
+    selected_song = playListBox.curselection()
+    selected_song = int(selected_song[0])
+    playListBox.delete(selected_song)
+    playList.pop(selected_song)
+
+btn_del = Button(leftFrame,text="- Delete",command=del_song)
 btn_del.pack(side=LEFT,padx=10)
 
 def show_details(play_it):
