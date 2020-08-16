@@ -2,6 +2,7 @@ import os
 import time
 import threading
 from tkinter import *
+from tkinter import ttk
 from pygame import mixer
 import tkinter.messagebox
 from mutagen.mp3 import MP3
@@ -11,7 +12,7 @@ from tkinter import filedialog
 root = Tk()
 
 
-statusbar = Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W)
+statusbar = ttk.Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W,font="Times 10 bold")
 statusbar.pack(side=BOTTOM,fill=X)
 
 
@@ -54,7 +55,7 @@ subMenu.add_command(label="About Us",command=about_us)
 mixer.init() #initializeing the mixer
 
 
-root.geometry('425x225')
+root.geometry('495x225')
 root.title("Player360")
 root.iconbitmap(r'../ico/360icon.ico')
 
@@ -69,10 +70,10 @@ topFrame.pack()
 
 
 
-fileLength = Label(topFrame,text="Total Length : --:--")
+fileLength = ttk.Label(topFrame,text="Total Length : --:--",font="Arial 10 bold")
 fileLength.pack()
 
-currentLengthLabel = Label(topFrame,text="Current Length : --:--",relief = GROOVE)
+currentLengthLabel = ttk.Label(topFrame,text="Current Length : --:--",relief = GROOVE,font="Arial 8 bold")
 currentLengthLabel.pack(pady=5)
 
 
@@ -92,8 +93,8 @@ unmute = PhotoImage(file="../ico/unmute.png")
 playListBox = Listbox(leftFrame)
 playListBox.pack(padx=20)
 
-btn_add = Button(leftFrame,text="+ Add",command=browse_file)
-btn_add.pack(side=LEFT,padx=20)
+btn_add = ttk.Button(leftFrame,text="+ Add",command=browse_file)
+btn_add.pack(side=LEFT)
 
 def del_song():
     selected_song = playListBox.curselection()
@@ -101,8 +102,8 @@ def del_song():
     playListBox.delete(selected_song)
     playList.pop(selected_song)
 
-btn_del = Button(leftFrame,text="- Delete",command=del_song)
-btn_del.pack(side=LEFT,padx=10)
+btn_del = ttk.Button(leftFrame,text="- Delete",command=del_song)
+btn_del.pack(side=LEFT)
 
 def show_details(play_it):
     file_type = os.path.splitext(play_it)
@@ -186,7 +187,7 @@ def pause_btn():
 
 isMute = FALSE    
 def val_btn(val):
-    volume = int(val) /100
+    volume = float(val) /100
     mixer.music.set_volume(volume)
 
 
@@ -208,19 +209,19 @@ def mute_btn():
 middleframe = Frame(rightFrame)
 
 middleframe.pack()
-playtBtn = Button(middleframe,image=playimg,command=play_btn).grid(row=0,column=1,padx=2)
-stopBtn = Button(middleframe,image=stopimg,command=stop_btn).grid(row=0,column=2,padx=2)
-pauseBtn = Button(middleframe,image=pauseimg,command=pause_btn).grid(row=0,column=3,padx=2)
-nextBtn = Button(middleframe,image=nextimg,command=next_btn).grid(row=0,column=4,padx=2)
-rewindBtn = Button(middleframe,image=rewindimg,command=rewind_btn).grid(row=0,column=0,padx=2)
+playtBtn = ttk.Button(middleframe,image=playimg,command=play_btn).grid(row=0,column=1,padx=2)
+stopBtn = ttk.Button(middleframe,image=stopimg,command=stop_btn).grid(row=0,column=2,padx=2)
+pauseBtn = ttk.Button(middleframe,image=pauseimg,command=pause_btn).grid(row=0,column=3,padx=2)
+nextBtn = ttk.Button(middleframe,image=nextimg,command=next_btn).grid(row=0,column=4,padx=2)
+rewindBtn = ttk.Button(middleframe,image=rewindimg,command=rewind_btn).grid(row=0,column=0,padx=2)
 
 bottomFrame = Frame(rightFrame)
 bottomFrame.pack()
 
-muteBtn = Button(bottomFrame,image=unmute,command=mute_btn)
+muteBtn = ttk.Button(bottomFrame,image=unmute,command=mute_btn)
 muteBtn.grid(row=0,column=0,padx=2)
 
-scale = Scale(bottomFrame,from_=0,to=100,orient=HORIZONTAL,command=val_btn)
+scale = ttk.Scale(bottomFrame,from_=0,to=100,orient=HORIZONTAL,command=val_btn)
 scale.set(70)
 scale.grid(row=0,column=1)
 
