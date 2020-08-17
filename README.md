@@ -10,3 +10,4 @@ module use :
 * Mutagen
 * Time
 * Threading
+* ttkthemes
