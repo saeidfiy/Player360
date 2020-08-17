@@ -3,13 +3,14 @@ import time
 import threading
 from tkinter import *
 from tkinter import ttk
+from ttkthemes import ThemedTk
 from pygame import mixer
 import tkinter.messagebox
 from mutagen.mp3 import MP3
 from tkinter import filedialog
 
 
-root = Tk()
+root = ThemedTk(theme="yaru")
 
 
 statusbar = ttk.Label(root,text="Welcome to Player360",relief=SUNKEN,anchor=W,font="Times 10 bold")
