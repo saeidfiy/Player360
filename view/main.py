@@ -56,7 +56,7 @@ subMenu.add_command(label="About Us",command=about_us)
 mixer.init() #initializeing the mixer
 
 
-root.geometry('495x225')
+root.geometry('610x233')
 root.title("Player360")
 root.iconbitmap(r'../ico/360icon.ico')
 
